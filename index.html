@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ece8df">
+  <meta name="description" content="starbfls 的三维个人空间。沿旋转楼梯，走进书房、影像展厅与实验室。">
+  <title>拾级 · starbfls 的个人空间</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232d3933'/%3E%3Cpath d='M15 47h12V35h12V23h12M15 53h38' fill='none' stroke='%23ede8db' stroke-width='5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <canvas id="world" aria-label="三维旋转楼梯与房间。可拖动旋转，滚轮上下移动，也可使用下方楼层按钮。"></canvas>
+  <header>
+    <a class="brand" href="./" aria-label="拾级，个人空间首页"><span class="brand-mark">s.</span><span>starbfls<span class="brand-sub">一个慢慢展开的个人空间</span></span></a>
+    <div class="header-actions"><button id="home" class="quiet">建筑总览 <span>↗</span></button><button id="help" class="icon-button" aria-label="操作说明">?</button></div>
+  </header>
+  <main>
+    <section class="intro" id="intro">
+      <p class="eyebrow">A HOUSE OF LITTLE WORLDS</p>
+      <h1>拾级而上，<br>走进我的世界<span>。</span></h1>
+      <p class="intro-copy">一些日常，一些影像，一些未完成的想法。<br>都藏在楼上的房间里。</p>
+      <div class="intro-detail"><span class="line"></span>三层空间 · 三种心境</div>
+    </section>
+    <div id="pins" aria-label="房间入口"></div>
+    <section id="room-info" class="room-info" hidden><p class="eyebrow" id="room-kicker"></p><h2 id="room-title"></h2><p id="room-description"></p><span class="room-note">示意空间 · 内容可替换为你的作品</span></section>
+    <div class="location" aria-hidden="true"><span id="location-number">00</span><span id="location-label">中庭 / ATRIUM</span></div>
+  </main>
+  <footer>
+    <div class="movement-hint" id="movement-hint"><span class="drag-icon">↔</span><span>拖动旋转<span class="hint-divider">/</span>滚轮上下</span></div>
+    <nav class="floor-nav" aria-label="楼层导航">
+      <button data-room="0"><span class="floor-no">01</span><span>栖木书房<small>THE STUDY</small></span><span class="nav-dot"></span></button>
+      <button data-room="1"><span class="floor-no">02</span><span>留光展厅<small>THE GALLERY</small></span><span class="nav-dot"></span></button>
+      <button data-room="2"><span class="floor-no">03</span><span>深夜实验室<small>THE LAB</small></span><span class="nav-dot"></span></button>
+    </nav>
+    <button class="back-button" id="back" hidden>← 返回回廊 <span>ESC</span></button>
+    <p class="status" id="status" role="status" aria-live="polite">选一扇门，开始探索</p>
+  </footer>
+  <dialog id="help-dialog"><button class="dialog-close" aria-label="关闭说明">×</button><p class="eyebrow">MAKE YOURSELF AT HOME</p><h2>慢慢逛，不着急。</h2><dl><dt>拖动鼠标 / 单指滑动</dt><dd>在中庭旋转视角；在房间里环顾四周。</dd><dt>滚轮 / 双指滑动</dt><dd>在中庭上下移动；在房间里前后移动。</dd><dt>点击房门 / 下方楼层</dt><dd>沿楼梯到达门前，开门后连续进入。</dd><dt>方向键</dt><dd>左右旋转，上下切换高度。</dd><dt>ESC / 返回回廊</dt><dd>走出房间；移动中可按 ESC 安全返回。</dd></dl><p class="dialog-foot">房间里的画作是程序生成的示意作品，可换成自己的照片。</p></dialog>
+  <dialog id="art-dialog"><button class="dialog-close" aria-label="关闭作品">×</button><img id="art-image" alt=""><p class="eyebrow">PLACEHOLDER COLLECTION</p><h2 id="art-title"></h2><p>这里可以放你的照片、作品和故事。目前展示的是程序绘制的示意画。</p></dialog>
+  <div class="error-panel" id="error" hidden><h2>三维场景暂时无法显示</h2><p id="error-message"></p><button onclick="location.reload()">重新载入</button></div>
+  <noscript><div class="error-panel"><h2>请开启 JavaScript</h2><p>这个三维空间需要 JavaScript 才能运行。</p></div></noscript>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
