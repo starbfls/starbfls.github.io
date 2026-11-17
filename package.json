@@ -6,6 +6,11 @@
   "scripts": {
     "dev": "node server.mjs",
     "start": "node server.mjs",
-    "check": "node --check app.js && node --check engine.js && node --check server.mjs"
+    "check": "node scripts/check.mjs",
+    "format": "prettier --write \"**/*.{js,mjs,json,html,css}\"",
+    "format:check": "prettier --check \"**/*.{js,mjs,json,html,css}\""
+  },
+  "devDependencies": {
+    "prettier": "3.10.1"
   }
 }

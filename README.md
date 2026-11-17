@@ -1,6 +1,6 @@
 # 拾级 · starbfls 的 3D 个人空间
 
-一个无需后端、无需安装依赖、无需 CDN 的静态网站原型。所有建筑、家具和示意画作均由代码生成；没有使用外部照片。
+一个运行时无需后端、无需安装依赖、无需 CDN 的静态网站原型。所有建筑、家具和示意画作均由代码生成；没有使用外部照片。
 
 ## 本地打开
 
@@ -27,15 +27,50 @@ node server.mjs
 2. 留光展厅：浅色墙面、四幅示意画作、展厅长凳。
 3. 深夜实验室：深色网格地面、蓝粉灯带、双屏工作台。
 
-## 文件
+## 代码结构
 
-- `index.html`：界面、楼层导航和说明弹窗。
-- `style.css`：响应式界面。
-- `app.js`：房间配置、参数化建模、连续镜头路径、开门动画、输入控制。
-- `engine.js`：轻量 WebGL 渲染、矩阵、几何体、纹理和射线拾取，无第三方依赖。
-- `server.mjs`：仅供本地预览的静态服务器，部署时不需要运行。
+```text
+app.js                 初始化场景、连接模块、启动渲染循环
+engine.js              WebGL 渲染、批处理、投影与射线拾取
+js/
+  config.js            楼层参数和房间名称、介绍、配色
+  spatial.js           中庭与房间的坐标换算
+  scene.js             建筑、门扇、家具和示意画作建模
+  navigation.js        镜头状态、行进路径、开关门和返回
+  controls.js          鼠标、触屏、滚轮和键盘事件
+  ui.js                楼层导航、门口标签、房间介绍与弹窗
+  engine/
+    math.js            向量和矩阵
+    geometry.js        方块、环形和管状几何体
+    materials.js       颜色和材质
+    shaders.js         顶点与片元着色器
+scripts/check.mjs      检查全部 JavaScript 模块的语法
+index.html             页面结构和弹窗
+style.css              响应式界面样式
+server.mjs             本地静态预览服务器
+```
 
-房间名称、介绍和角度在 `app.js` 顶部的 `rooms` 中设置。楼高由 `FLOOR` 控制；每层 32 级台阶。门动画通过 `room.door` 控制铰链旋转角度。`artwork()` 绘制占位画作，`frame()` 将画作挂到墙上；可以在此接入本地图片纹理，并更新作品标题。
+修改房间内容从 `js/config.js` 的 `ROOM_DEFINITIONS` 开始；楼高由 `FLOOR_HEIGHT` 控制，楼梯起始方位由 `STAIR_START_ANGLE` 控制。
+
+家具与装饰分别在 `js/scene.js` 的 `furnishStudy()`、`furnishGallery()`、`furnishLab()` 中；`createArtwork()` 绘制示意画，`addArtworkFrame()` 将画作挂到墙上。镜头路线和 `room.door` 的动画在 `js/navigation.js` 中维护；输入的移动速度和范围在 `js/controls.js` 中调整。
+
+## 整理和检查代码
+
+本地预览仍可直接运行 `node server.mjs` 或双击 `start.cmd`，无需安装依赖。只有需要自动排版时才安装开发工具：
+
+```powershell
+New-Item -ItemType Directory -Path .local/tmp -Force | Out-Null
+$env:TEMP = "$PWD\.local\tmp"
+$env:TMP = $env:TEMP
+$env:TMPDIR = $env:TEMP
+$env:npm_config_cache = "$PWD\.local\npm-cache"
+npm ci
+npm run format
+npm run format:check
+npm run check
+```
+
+Prettier 只用于开发，不会随网页加载。格式约定见 `.prettierrc.json`：两个空格缩进、单引号、分号、100 字符目标行宽。`.local/`、`node_modules/` 和自动生成的锁文件不参与排版。
 
 ## 工作目录
 
@@ -49,7 +84,7 @@ node server.mjs
 
 ## GitHub Pages
 
-将 `index.html`、`style.css`、`app.js`、`engine.js` 放在仓库根目录并提交。在仓库 Settings → Pages 中，选择从 `main` 分支的根目录发布。所有路径均为相对路径，也可放到项目子目录。无需构建和数据库。
+保留仓库根目录的 `index.html`、`style.css`、`app.js`、`engine.js`，以及完整的 `js/` 目录，再提交用于发布的文件。在仓库 Settings → Pages 中，选择从 `main` 分支的根目录发布。所有路径均为相对路径，也可放到项目子目录。无需构建和数据库。
 
 ## 原型边界
 
