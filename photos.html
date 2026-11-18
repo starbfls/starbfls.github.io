@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#eee8dc" />
+    <meta name="description" content="藏在书页里的照片墙。" />
+    <title>书页里的照片 · starbfls</title>
+    <style>
+      html {
+        background: #eee8dc;
+      }
+      body {
+        margin: 0;
+      }
+    </style>
+    <link rel="stylesheet" href="./styles/rooms.css" />
+    <link rel="stylesheet" href="./styles/photos.css" />
+  </head>
+  <body class="photos-page">
+    <header class="room-header">
+      <a class="room-brand" href="./study.html"
+        ><span class="room-brand-mark">s.</span><span>starbfls<small>书页里的照片</small></span></a
+      >
+      <nav aria-label="相册导航">
+        <a href="./study.html">合上书，回到书房</a><a href="./gallery.html">留光展厅</a>
+      </nav>
+    </header>
+    <main class="album-page" aria-labelledby="album-title">
+      <section class="album-heading">
+        <p class="room-eyebrow" id="album-english"></p>
+        <svg class="album-motif" viewBox="0 0 180 140" aria-hidden="true">
+          <use id="album-motif" href="./assets/book-motifs.svg#travel"></use>
+        </svg>
+        <h1 id="album-title">旅行日记</h1>
+        <p id="album-description"></p>
+        <span class="album-rule"></span>
+      </section>
+      <p class="album-empty-note" id="album-empty-note">这本相册还空着，等照片慢慢填满。</p>
+      <div class="photo-wall" id="photo-wall" aria-label="相册照片墙"></div>
+      <p class="album-ending">把这一页，留给下一次相遇。</p>
+    </main>
+    <dialog class="photo-dialog" id="photo-viewer" aria-label="照片大图">
+      <button class="dialog-dismiss" data-close-viewer aria-label="关闭照片">×</button
+      ><img id="viewer-image" alt="" />
+      <p id="viewer-caption"></p>
+      <div class="viewer-controls">
+        <button id="previous-photo">上一张</button
+        ><span id="viewer-position" aria-live="polite"></span
+        ><button id="next-photo">下一张</button>
+      </div>
+    </dialog>
+    <script type="module" src="./js/pages/photos.js"></script>
+  </body>
+</html>

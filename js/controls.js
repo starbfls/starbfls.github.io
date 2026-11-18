@@ -3,7 +3,7 @@ const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
 /** 鼠标、触屏、滚轮和键盘输入；镜头行进由 navigation 负责。 */
 export function bindControls({ canvas, engine, navigation, ui }) {
-  const { state, enter, leave } = navigation;
+  const { state, interactWithDoor, leave } = navigation;
 
   function handlePointerDown(event) {
     if (state.busy) return;
@@ -29,6 +29,7 @@ export function bindControls({ canvas, engine, navigation, ui }) {
     drag.x = event.clientX;
     drag.y = event.clientY;
     state.pointers.set(event.pointerId, [event.clientX, event.clientY]);
+    if (state.mode === 'doorway') return;
 
     if (state.pointers.size > 1) {
       drag.multi = true;
@@ -57,7 +58,7 @@ export function bindControls({ canvas, engine, navigation, ui }) {
     canvas.classList.remove('dragging');
     if (drag.distance < 7 && !drag.multi && !state.busy) {
       const hit = engine.pick(event.clientX, event.clientY);
-      if (hit?.action?.type === 'door') enter(hit.action.id);
+      if (hit?.action?.type === 'door') interactWithDoor(hit.action.id);
       if (hit?.action?.type === 'art') ui.showArt(hit.action.id);
     }
   }
@@ -70,7 +71,7 @@ export function bindControls({ canvas, engine, navigation, ui }) {
 
   function handleWheel(event) {
     event.preventDefault();
-    if (state.busy) return;
+    if (state.busy || state.mode === 'doorway') return;
     const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? innerHeight : 1;
     const delta = event.deltaY * unit;
     if (state.mode === 'atrium') state.height = clamp(state.height + delta * 0.008, 0.5, 10.5);
@@ -83,7 +84,7 @@ export function bindControls({ canvas, engine, navigation, ui }) {
       leave();
       return;
     }
-    if (state.busy || !ARROW_KEYS.includes(event.key)) return;
+    if (state.busy || state.mode === 'doorway' || !ARROW_KEYS.includes(event.key)) return;
     event.preventDefault();
     if (state.mode === 'atrium') {
       state.angle += event.key === 'ArrowLeft' ? 0.12 : event.key === 'ArrowRight' ? -0.12 : 0;

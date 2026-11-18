@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f0f1eb" />
+    <meta name="description" content="留光展厅。一处留给照片的现代艺术空间。" />
+    <title>留光展厅 · starbfls</title>
+    <style>
+      html {
+        background: #f0f1eb;
+      }
+      body {
+        margin: 0;
+      }
+    </style>
+    <link rel="stylesheet" href="./styles/rooms.css" />
+    <link rel="stylesheet" href="./styles/gallery.css" />
+  </head>
+  <body class="gallery-page">
+    <header class="room-header">
+      <a class="room-brand" href="./"
+        ><span class="room-brand-mark">s.</span><span>starbfls<small>留光展厅</small></span></a
+      >
+      <nav aria-label="房间导航">
+        <a href="./study.html">栖木书房</a
+        ><a class="corridor-link" href="./?door=gallery">返回回廊</a>
+      </nav>
+    </header>
+    <main class="museum-room" aria-labelledby="gallery-title">
+      <img
+        class="museum-architecture"
+        src="./assets/museum-room.svg"
+        alt="浅色墙面、轨道灯、石质地面与长凳组成的现代美术馆空间。"
+      />
+      <section class="museum-intro">
+        <p class="room-eyebrow">THE GALLERY OF LITTLE MOMENTS</p>
+        <h1 id="gallery-title">留光。</h1>
+        <p>有些瞬间，值得停下来。</p>
+      </section>
+      <div class="museum-wall" id="museum-wall" aria-label="等待照片的画框"></div>
+      <p class="museum-footnote">此刻留白，往后留光。</p>
+      <span class="museum-side-note" aria-hidden="true">STARB FLS — A PERSONAL GALLERY</span>
+    </main>
+    <dialog class="photo-dialog" id="photo-viewer" aria-label="照片大图">
+      <button class="dialog-dismiss" data-close-viewer aria-label="关闭照片">×</button
+      ><img id="viewer-image" alt="" />
+      <p id="viewer-caption"></p>
+      <div class="viewer-controls">
+        <button id="previous-photo">上一张</button
+        ><span id="viewer-position" aria-live="polite"></span
+        ><button id="next-photo">下一张</button>
+      </div>
+    </dialog>
+    <script type="module" src="./js/pages/gallery.js"></script>
+  </body>
+</html>

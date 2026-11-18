@@ -164,7 +164,7 @@ export function createScene(engine) {
       addMesh(ring(4.05, 7.45, 0.26), mat.stone, 0, y - 0.13, 0);
       addMesh(ring(7.4, 7.5, 0.1), mat.edge, 0, y - 0.06, 0);
       // Four slender structural posts instead of an opaque exterior wall.
-      for (const a of [-1.2, -0.1, 1.5, 3.7]) {
+      for (const a of [-1.2, -0.1, 1.5, 4.9]) {
         const p = world(7.1, a, y + 2.2);
         addCylinder(0.105, 4.4, mat.stone, ...p);
         addCylinder(0.17, 0.12, mat.brass, p[0], y + 0.08, p[2]);
@@ -229,7 +229,7 @@ export function createScene(engine) {
   function buildSkylight() {
     // An open skylight ring, suspended pendants and a small ground-floor garden.
     addMesh(ring(4.05, 7.5, 0.14), mat.edge, 0, 13.8, 0);
-    for (const a of [-1.2, -0.1, 1.5, 3.7]) {
+    for (const a of [-1.2, -0.1, 1.5, 4.9]) {
       const p = world(7.1, a, 11.7);
       addCylinder(0.105, 4.2, mat.stone, ...p);
     }
@@ -263,8 +263,10 @@ export function createScene(engine) {
     addBlock(2.12, 3.65, 0.2, wall, -1.94, 1.825, 0, 0, p);
     addBlock(2.12, 3.65, 0.2, wall, 1.94, 1.825, 0, 0, p);
     addBlock(1.76, 0.88, 0.2, wall, 0, 3.21, 0, 0, p);
-    for (const x of [-0.93, 0.93]) addBlock(0.12, 2.9, 0.28, mat.brass, x, 1.45, -0.02, 0, p);
-    addBlock(1.98, 0.12, 0.28, mat.brass, 0, 2.86, -0.02, 0, p);
+    const frameMaterial =
+      room.theme === 'gallery' ? mat.white : room.theme === 'lab' ? mat.metal : mat.brass;
+    for (const x of [-0.93, 0.93]) addBlock(0.12, 2.9, 0.28, frameMaterial, x, 1.45, -0.02, 0, p);
+    addBlock(1.98, 0.12, 0.28, frameMaterial, 0, 2.86, -0.02, 0, p);
     // Both a mesh and all of its fittings pivot around the left hinge.
     const doorTransform = (x, y, z) => () =>
       mul(p, mul(pose(-0.86, 0, 0, -room.door), pose(x, y, z)));
@@ -285,17 +287,7 @@ export function createScene(engine) {
       type: 'door',
       id: i,
     });
-    addBlock(
-      1.7,
-      0.36,
-      0.04,
-      createTextMaterial(`${String(i + 1).padStart(2, '0')}  ${room.name}`),
-      0,
-      3.22,
-      -0.14,
-      0,
-      p,
-    );
+    addDoorPlaque(room, i, p);
     addBlock(1.7, 0.018, 0.025, room.theme === 'lab' ? mat.blue : mat.glow, 0, 0.02, -0.15, 0, p);
     // Interior edge details and a small uplight strip.
     for (const x of [-2.9, 2.9]) addBlock(0.06, 0.1, 5.55, mat.brass, x, 0.07, 2.8, 0, p);
@@ -307,6 +299,100 @@ export function createScene(engine) {
       lab: furnishLab,
     }[room.theme];
     furnish(room.parent);
+    const decorateFacade = {
+      study: decorateStudyFacade,
+      gallery: decorateGalleryFacade,
+      lab: decorateLabFacade,
+    }[room.theme];
+    decorateFacade(room.parent);
+  }
+
+  function addDoorPlaque(room, index, parent) {
+    const width = 1.7;
+    const height = 0.32;
+    const geometry = box(width, height, 0.04);
+    const face = [];
+    // 仅正面使用文字纹理，其余侧面保持纯色，避免文字在薄边上重复。
+    for (let offset = 0; offset < geometry.length; offset += 8) {
+      if (geometry[offset + 5] > -0.5) continue;
+      face.push(
+        geometry[offset],
+        geometry[offset + 1],
+        -0.025,
+        0,
+        0,
+        -1,
+        0.5 - geometry[offset] / width,
+        0.5 + geometry[offset + 1] / height,
+      );
+    }
+    const dark = room.theme === 'lab';
+    const background = dark ? '#273540' : '#e9e2cd';
+    const label = createTextMaterial(
+      `${String(index + 1).padStart(2, '0')}  ${room.name}`,
+      background,
+      dark ? '#a3d7d2' : '#4b5144',
+    );
+    const transform = mul(parent, pose(0, 3.3, -0.24));
+    engine.add(geometry, material(background), transform);
+    engine.add(face, label, transform);
+  }
+
+  function decorateStudyFacade(parent) {
+    const timber = material('#795b40');
+    const trim = material('#534a36');
+    for (const side of [-1, 1]) {
+      for (let index = 0; index < 9; index++) {
+        addBlock(0.085, 3.35, 0.09, timber, side * (1.16 + index * 0.215), 1.85, -0.15, 0, parent);
+      }
+      addBlock(1.95, 0.24, 0.16, trim, side * 2.02, 0.13, -0.13, 0, parent);
+      addBlock(0.2, 0.5, 0.2, trim, side * 1.35, 2.15, -0.28, 0, parent);
+      addBlock(0.11, 0.32, 0.24, mat.glow, side * 1.35, 2.15, -0.31, 0, parent);
+      for (let index = 0; index < 8; index++) {
+        addBlock(0.075, 3.35, 0.085, timber, side * 3.1, 1.85, 0.5 + index * 0.65, 0, parent);
+      }
+    }
+    addBlock(6.2, 0.17, 0.4, timber, 0, 3.62, -0.08, 0, parent);
+    addPlant(2.35, 0, -0.55, parent, 0.85);
+  }
+
+  function decorateGalleryFacade(parent) {
+    const stone = material('#efeee5');
+    const joint = material('#bdc0b4');
+    for (const side of [-1, 1]) {
+      addBlock(1.94, 0.18, 0.17, stone, side * 2.02, 0.11, -0.15, 0, parent);
+      for (const height of [0.68, 1.45, 2.22, 3.02]) {
+        addBlock(1.94, 0.018, 0.025, joint, side * 2.02, height, -0.115, 0, parent);
+      }
+      addBlock(0.035, 3.55, 0.025, joint, side * 2.2, 1.82, -0.115, 0, parent);
+      addBlock(0.14, 3.12, 0.38, stone, side * 1.08, 1.56, -0.15, 0, parent);
+      addBlock(0.12, 0.2, 5.8, stone, side * 3.1, 0.11, 2.8, 0, parent);
+    }
+    addBlock(2.3, 0.16, 0.38, stone, 0, 3.04, -0.15, 0, parent);
+    addBlock(6.15, 0.12, 0.28, stone, 0, 3.64, 0, 0, parent);
+    // 一块小型几何浮雕，让展厅外墙与室内的作品展示相呼应。
+    addBlock(0.52, 0.82, 0.08, material('#a9b9aa'), 2.18, 1.95, -0.17, 0, parent);
+    addBlock(0.3, 0.3, 0.12, material('#d3b18c'), 2.03, 1.85, -0.25, 0.28, parent);
+    addBlock(0.23, 0.45, 0.13, stone, 2.3, 2.03, -0.25, -0.2, parent);
+  }
+
+  function decorateLabFacade(parent) {
+    const panel = material('#293540');
+    const edge = material('#687a83');
+    for (const side of [-1, 1]) {
+      addBlock(1.72, 2.95, 0.09, panel, side * 2.03, 1.76, -0.16, 0, parent);
+      for (const height of [0.36, 1.02, 2.48, 3.18]) {
+        addBlock(1.74, 0.035, 0.04, edge, side * 2.03, height, -0.23, 0, parent);
+      }
+      addBlock(0.055, 3.12, 0.06, mat.blue, side * 1.12, 1.58, -0.22, 0, parent);
+      addBlock(0.11, 3.3, 0.18, edge, side * 2.98, 1.7, -0.12, 0, parent);
+      addBlock(0.08, 2.95, 5.4, panel, side * 3.11, 1.76, 2.8, 0, parent);
+    }
+    addBlock(5.7, 0.05, 0.065, mat.pink, 0, 3.48, -0.15, 0, parent);
+    addBlock(2.25, 0.14, 0.3, panel, 0, 3, -0.16, 0, parent);
+    addBlock(0.18, 0.045, 0.06, mat.blue, 0.75, 3.02, -0.35, 0, parent);
+    addBlock(0.35, 0.48, 0.09, edge, 1.65, 1.35, -0.27, 0, parent);
+    addBlock(0.25, 0.3, 0.04, mat.blue, 1.65, 1.41, -0.34, 0, parent);
   }
 
   function furnishStudy(parent) {

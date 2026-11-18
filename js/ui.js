@@ -11,8 +11,20 @@ export function createUi({ rooms, art, engine }) {
   function updateHud(state) {
     document.body.classList.toggle('inside', state.mode === 'room');
     document.body.classList.toggle('travelling', state.busy);
-    $('#back').hidden = state.mode !== 'room' && !state.busy;
-    $('#room-info').hidden = state.mode !== 'room';
+    if (state.busy) $('#world').classList.remove('dragging');
+    document.body.classList.toggle('at-door', state.mode === 'doorway');
+    $('#back').hidden = state.mode === 'atrium' && !state.busy;
+    $('#open-door').hidden = state.mode !== 'doorway';
+    $('#open-door').disabled = state.busy;
+    if (state.room !== null) {
+      $('#open-door').textContent =
+        state.phase === 'opening'
+          ? '正在开门…'
+          : state.phase === 'entering'
+            ? '正在进入…'
+            : `开门 · ${rooms[state.room].name} →`;
+    }
+    $('#room-info').hidden = state.mode !== 'room' || state.busy;
     $('#movement-hint').innerHTML =
       state.mode === 'room'
         ? '<span class="drag-icon">↔</span><span>拖动环顾 / 滚轮前后</span>'
@@ -42,20 +54,21 @@ export function createUi({ rooms, art, engine }) {
     $('#art-dialog').showModal();
   }
 
-  function bindActions({ enter, leave, home }) {
+  function bindActions({ approachRoom, openDoor, leave, home }) {
     rooms.forEach((room, index) => {
       const pin = document.createElement('button');
       pin.className = 'door-pin';
       pin.innerHTML = `<span>0${index + 1}</span>${room.name} ↗`;
-      pin.setAttribute('aria-label', `进入${room.name}`);
-      pin.onclick = () => enter(index);
+      pin.setAttribute('aria-label', `前往${room.name}门前`);
+      pin.onclick = () => approachRoom(index);
       $('#pins').appendChild(pin);
       room.pin = pin;
     });
 
     document.querySelectorAll('[data-room]').forEach((button) => {
-      button.onclick = () => enter(Number(button.dataset.room));
+      button.onclick = () => approachRoom(Number(button.dataset.room));
     });
+    $('#open-door').onclick = openDoor;
     $('#back').onclick = leave;
     $('#home').onclick = home;
     $('#help').onclick = () => $('#help-dialog').showModal();
@@ -95,7 +108,7 @@ export function createUi({ rooms, art, engine }) {
           unobstructed = hit?.action?.type === 'door' && hit.action.id === index;
         }
       }
-      room.pin.hidden = !inViewport || !unobstructed || state.busy || state.mode === 'room';
+      room.pin.hidden = !inViewport || !unobstructed || state.busy || state.mode !== 'atrium';
       if (position) {
         room.pin.style.left = `${position.x}px`;
         room.pin.style.top = `${position.y}px`;

@@ -1,0 +1,163 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1440 1000"
+  preserveAspectRatio="none"
+  fill="none"
+>
+  <defs>
+    <linearGradient id="wall" x2="0" y2="1">
+      <stop stop-color="#303a2b" />
+      <stop offset="1" stop-color="#182319" />
+    </linearGradient>
+    <linearGradient id="wood" x2="1" y2="0">
+      <stop stop-color="#21150e" />
+      <stop offset=".25" stop-color="#563723" />
+      <stop offset=".55" stop-color="#382218" />
+      <stop offset=".8" stop-color="#69442a" />
+      <stop offset="1" stop-color="#27180f" />
+    </linearGradient>
+    <linearGradient id="desktop" x1=".1" y1="0" x2=".8" y2="1">
+      <stop stop-color="#a27643" />
+      <stop offset=".3" stop-color="#70482c" />
+      <stop offset=".7" stop-color="#513420" />
+      <stop offset="1" stop-color="#8b6038" />
+    </linearGradient>
+    <linearGradient id="glass" x2="0" y2="1">
+      <stop stop-color="#c7c5a4" />
+      <stop offset=".6" stop-color="#8d9d82" />
+      <stop offset="1" stop-color="#4d6350" />
+    </linearGradient>
+    <linearGradient id="floor" x2="0" y2="1">
+      <stop stop-color="#303022" />
+      <stop offset="1" stop-color="#171c15" />
+    </linearGradient>
+    <linearGradient id="gold" x2="1" y2="1">
+      <stop stop-color="#f0dc9f" />
+      <stop offset=".4" stop-color="#ab8249" />
+      <stop offset=".7" stop-color="#d1b172" />
+      <stop offset="1" stop-color="#765127" />
+    </linearGradient>
+    <linearGradient id="paper" x2="0" y2="1">
+      <stop stop-color="#e0cba0" />
+      <stop offset="1" stop-color="#a99269" />
+    </linearGradient>
+    <radialGradient id="light">
+      <stop stop-color="#e4be78" stop-opacity=".26" />
+      <stop offset="1" stop-color="#d6a458" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="vignette">
+      <stop offset=".3" stop-color="#080b08" stop-opacity="0" />
+      <stop offset="1" stop-color="#080b08" stop-opacity=".55" />
+    </radialGradient>
+    <pattern id="grain" width="210" height="18" patternUnits="userSpaceOnUse">
+      <path
+        d="M0 3C50 1 80 9 135 3s60 0 75 1M0 12c65-7 100 7 170 1s26 0 40 1"
+        stroke="#d5ad69"
+        stroke-opacity=".09"
+      />
+    </pattern>
+    <pattern id="wallpaper" width="72" height="88" patternUnits="userSpaceOnUse">
+      <path
+        d="M36 8c-17 17-18 31 0 44C54 39 53 25 36 8ZM36 24v45m-12-3c-15-13-14-24 0-27m24 27c15-13 14-24 0-27"
+        stroke="#b9a26a"
+        stroke-opacity=".085"
+      />
+    </pattern>
+    <pattern id="frieze" width="50" height="22" patternUnits="userSpaceOnUse">
+      <path d="M0 4h40v14H10V9h20" stroke="#9a7c48" stroke-width="2" opacity=".5" />
+    </pattern>
+  </defs>
+  <rect width="1440" height="1000" fill="url(#wall)" />
+  <rect y="105" width="1440" height="575" fill="url(#wallpaper)" />
+  <path d="M0 663h1440v337H0Z" fill="url(#floor)" />
+  <path
+    d="M720 660 60 1000m660-340 660 340m-660-340L350 1000m370-340 370 340M0 845h1440M0 948h1440"
+    stroke="#a09060"
+    stroke-opacity=".08"
+  />
+  <g id="wall-panelling" fill="url(#wood)" stroke="#8d6b3b" stroke-width="1.3">
+    <path d="M0 55h1440v45H0ZM0 617h1440v64H0Z" />
+    <path d="M38 100h28v520H38ZM403 100h28v520h-28ZM1014 100h28v520h-28ZM1376 100h28v520h-28Z" />
+  </g>
+  <rect y="66" width="1440" height="22" fill="url(#frieze)" />
+  <path d="M0 58h1440M0 98h1440M0 625h1440M0 672h1440" stroke="#b69759" stroke-opacity=".5" />
+  <g id="arched-window">
+    <path
+      d="M109 480V245a129 129 0 0 1 258 0v235Z"
+      fill="#110f0c"
+      stroke="url(#gold)"
+      stroke-width="11"
+    />
+    <path d="M123 468V247a115 115 0 0 1 230 0v221Z" fill="url(#glass)" />
+    <path d="M125 389c61-79 118-57 167-9s47 22 61 13v75H123Z" fill="#52664f" />
+    <path d="m140 467 12-125 12 125m115 0 13-171 14 171m-105 0 12-104 12 104" fill="#2d4938" />
+    <path d="M238 130v339M124 271h228M124 368h228" stroke="#66553b" stroke-width="8" />
+    <path d="m238 133-84 138m84-138 83 138" stroke="#66553b" stroke-width="5" />
+    <path d="M92 488h294v22H92Z" fill="url(#wood)" stroke="#b19560" />
+    <path d="m127 331 368 283-56 52-316-262Z" fill="#e7d2a0" opacity=".055" />
+  </g>
+  <g id="bookcase">
+    <path d="M451 143h545v480H451Z" fill="#171811" />
+    <path
+      d="M437 127h575v27H437ZM445 608h559v25H445Z"
+      fill="url(#wood)"
+      stroke="#94713e"
+      stroke-width="2"
+    />
+    <path d="M449 149h17v461h-17ZM981 149h17v461h-17ZM709 154h17v151h-17Z" fill="url(#wood)" />
+    <path
+      d="M453 299h542v18H453ZM453 402h542v15H453ZM453 580h542v23H453Z"
+      fill="url(#wood)"
+      stroke="#94713e"
+    />
+    <g stroke="#b09a60" stroke-opacity=".45">
+      <path d="M477 182h26v116h-26Z" fill="#6d3f2e" />
+      <path d="M508 169h33v129h-33Z" fill="#343d2c" />
+      <path d="M546 183h24v115h-24Z" fill="#735c3b" />
+      <path d="M575 177h34v121h-34Z" fill="#484635" />
+      <path d="m619 186 26-7 28 114-26 6Z" fill="#672f29" />
+      <path d="M751 176h31v122h-31Z" fill="#715333" />
+      <path d="M787 164h26v134h-26Z" fill="#374536" />
+      <path d="M818 182h37v116h-37Z" fill="#64402b" />
+      <path d="M862 171h23v127h-23Z" fill="#71674b" />
+      <path d="M891 184h35v114h-35Z" fill="#4b3029" />
+      <path d="m935 181 25-6 22 116-25 6Z" fill="#58553b" />
+    </g>
+    <g fill="none" stroke="#b49b5c" stroke-opacity=".5">
+      <path
+        d="M481 198h18m-18 79h18m14-93h23m-23 97h23m12-82h15m-15 77h15m186-87h20m-20 91h20m16-99h15m-15 99h15m22-83h25m-25 83h25m13-88h15m-15 90h15"
+      />
+    </g>
+    <g id="small-objects">
+      <path d="M493 399v-45c0-22 36-22 36 0v45" fill="#b49a67" />
+      <path d="M489 398h45" stroke="#765a31" stroke-width="5" />
+      <circle cx="512" cy="367" r="13" fill="#ddcba0" stroke="#755a36" />
+      <path d="M512 357v11l7 4" stroke="#6c5637" />
+      <path
+        d="M762 397h104v-15H762Zm8-18h88v-17h-88Zm-6-21h98v-14h-98Z"
+        fill="#766344"
+        stroke="#ae9461"
+      />
+      <path d="M911 399v-34m-17 34h34m-30-40h27l-4-20h-19Z" stroke="url(#gold)" stroke-width="3" />
+      <ellipse cx="911" cy="336" rx="3" ry="7" fill="#f2d99b" />
+    </g>
+    <path d="M482 434h39v146h-39Z" fill="#6b5333" stroke="#a48853" />
+    <path d="M928 437h35v143h-35Z" fill="#514535" stroke="#9f8655" />
+    <path d="M486 454h31m-31 104h31m415-104h27m-27 104h27" stroke="#b69b60" />
+  </g>
+  <g id="classical-picture">
+    <path d="M1084 183h213v310h-213Z" fill="#1b1710" stroke="url(#gold)" stroke-width="14" />
+    <path d="M1096 194h188v288h-188Z" fill="#6c7156" stroke="#392b1b" stroke-width="3" />
+    <path d="M1097 364c60-67 105-74 187-48v165h-187Z" fill="#53604b" />
+    <path d="M1097 405c70-43 107-30 187-29v105h-187Z" fill="#344634" />
+    <path
+      d="M1163 480V298h70v182m-82-182h94m-87-11h80m-72 21v167m21-167v167m21-167v167"
+      stroke="#b4ab7a"
+      stroke-width="5"
+    />
+    <path d="m1151 284 48-31 46 31" fill="#c1b889" />
+    <path d="M1072 175h239v12h-239Zm0 314h239v12h-239Z" fill="url(#gold)" />
+  </g>
+  <ellipse cx="1040" cy="548" rx="350" ry="270" fill="url(#light)" />
+  <rect width="1440" height="1000" fill="url(#vignette)" pointer-events="none" />
+</svg>

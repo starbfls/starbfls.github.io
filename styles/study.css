@@ -1,0 +1,517 @@
+.study-page {
+  color: #ded3b5;
+  background: #1d251c;
+}
+.study-page .room-header {
+  color: #e6d6ab;
+  background: linear-gradient(#10170d99, transparent);
+}
+.study-room {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 790px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.study-interior {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.study-illustration {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.study-intro {
+  position: absolute;
+  left: 7.5%;
+  top: 22%;
+  max-width: 290px;
+  pointer-events: none;
+  text-shadow: 0 2px 18px #0a1008;
+}
+.study-intro::before {
+  content: '';
+  position: absolute;
+  inset: -35px -20px;
+  z-index: -1;
+  background: radial-gradient(ellipse, #152013bb, transparent 72%);
+}
+.study-intro .room-eyebrow {
+  color: #c0a76a;
+  margin-bottom: 24px;
+}
+.study-intro h1 {
+  font-family: 'Songti SC', 'SimSun', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 3.1vw, 3rem);
+  line-height: 1.7;
+  letter-spacing: 3px;
+  color: #f0e1bd;
+}
+.study-intro > p:last-child {
+  margin-top: 23px;
+  font-size: 1rem;
+  color: #d2c7a5;
+  line-height: 2;
+  letter-spacing: 1px;
+}
+.books-on-shelf {
+  position: absolute;
+  left: 37.2%;
+  top: 42.2%;
+  width: 26.2%;
+  height: 15.8%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  gap: 4%;
+  perspective: 1000px;
+}
+.shelf-book {
+  position: relative;
+  width: 27%;
+  height: 100%;
+  max-width: 90px;
+  padding: 0;
+  color: #dac38b;
+  background: linear-gradient(
+    90deg,
+    #10150d,
+    var(--book-color) 12%,
+    var(--book-color) 75%,
+    #17170f
+  );
+  border: 1px solid #b69a5a;
+  border-radius: 4px 2px 2px 4px;
+  box-shadow:
+    inset 5px 0 5px #0007,
+    inset -3px 0 4px #0006,
+    7px 5px 8px #0006;
+  transform: rotate(var(--lean, 0deg));
+  transform-origin: center bottom;
+  transition:
+    transform 0.32s,
+    filter 0.32s;
+}
+.shelf-book:nth-child(1) {
+  --lean: -3deg;
+  height: 97%;
+}
+.shelf-book:nth-child(2) {
+  --lean: 1.5deg;
+}
+.shelf-book:nth-child(3) {
+  --lean: -1deg;
+  height: 94%;
+}
+.shelf-book::before,
+.shelf-book::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  height: 6px;
+  border-top: 1px solid #c4a365;
+  border-bottom: 1px solid #c4a365;
+  opacity: 0.8;
+}
+.shelf-book::before {
+  top: 11px;
+}
+.shelf-book::after {
+  bottom: 10px;
+}
+.shelf-book span {
+  display: inline-block;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'SimSun', serif;
+  font-size: clamp(1rem, 1.4vw, 1.35rem);
+  letter-spacing: 6px;
+  line-height: 1.3;
+}
+.shelf-book:hover,
+.shelf-book:focus-visible {
+  transform: translateY(-17px) rotateY(-12deg);
+  filter: brightness(1.2);
+}
+.shelf-invitation {
+  position: absolute;
+  left: 50%;
+  top: 58.8%;
+  transform: translateX(-50%);
+  color: #cdbb8b;
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+.study-caption {
+  position: absolute;
+  left: 48px;
+  bottom: 30px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  color: #b4ad8e;
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+}
+.caption-line {
+  width: 36px;
+  height: 1px;
+  background: #a38c55;
+}
+.record-corner {
+  position: absolute;
+  right: 28px;
+  bottom: 18px;
+  z-index: 4;
+}
+.gramophone-button {
+  display: block;
+  border: 0;
+  background: none;
+  color: #dbc595;
+  padding: 0;
+  width: clamp(135px, 13vw, 190px);
+  text-align: center;
+}
+.gramophone-button > img {
+  display: block;
+  width: 100%;
+  filter: drop-shadow(0 12px 15px #0006);
+  transition:
+    filter 0.25s,
+    transform 0.25s;
+}
+.gramophone-button:hover > img {
+  filter: drop-shadow(0 10px 20px #d3af6233);
+  transform: translateY(-3px);
+}
+.record-label {
+  display: block;
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+}
+.record-label > span {
+  display: block;
+  font-size: 0.75rem;
+  margin-top: 2px;
+  color: #aaa388;
+  letter-spacing: 1px;
+}
+.gramophone-button.is-playing .record-label {
+  color: #efdaa4;
+}
+.record-note {
+  position: absolute;
+  right: 5px;
+  bottom: calc(100% + 12px);
+  width: 220px;
+  padding: 20px;
+  border: 1px solid #9e814d;
+  background: #20291fed;
+  box-shadow: 0 12px 40px #0006;
+}
+.record-note > p:first-child {
+  font-family: 'SimSun', serif;
+  font-size: 1.1rem;
+  color: #ead9ae;
+}
+.record-note > p:nth-child(2) {
+  font-size: 0.875rem;
+  margin: 8px 0;
+  color: #c2b795;
+}
+.record-note button {
+  border: 0;
+  border-bottom: 1px solid #79643e;
+  background: none;
+  color: #bda87d;
+  padding: 3px 0;
+  font-size: 0.875rem;
+}
+.book-dialog {
+  width: min(760px, calc(100% - 24px));
+  max-height: calc(100svh - 24px);
+  padding: 36px 24px 32px;
+  border: 1px solid #c2a66c38;
+  color: #e5d5af;
+  background: #1d261bef;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-shadow: 0 25px 100px #0009;
+}
+.book-dialog::backdrop {
+  background: #090f0bbd;
+  backdrop-filter: blur(7px);
+}
+.book-preview-heading {
+  text-align: center;
+}
+.book-preview-heading .room-eyebrow {
+  color: #a9966b;
+}
+.book-preview-heading h2 {
+  font-family: 'SimSun', serif;
+  font-weight: 400;
+  font-size: 1.65rem;
+  margin-top: 12px;
+  letter-spacing: 4px;
+}
+.book-preview-heading > p:last-child {
+  font-size: 0.875rem;
+  color: #b2ac92;
+  margin-top: 8px;
+}
+.book-perspective {
+  width: 300px;
+  height: 365px;
+  margin: 24px auto;
+  display: grid;
+  place-items: center;
+  perspective: 1300px;
+}
+.enlarged-book {
+  position: relative;
+  width: 238px;
+  height: 330px;
+  color: #d8bc7b;
+  transform: rotateY(-18deg) rotateX(4deg);
+  transform-style: preserve-3d;
+}
+.book-front,
+.book-back {
+  position: absolute;
+  inset: 0;
+  background: var(--book-color, #33463c);
+  border: 1px solid #d2b576;
+  border-radius: 2px 5px 5px 2px;
+}
+.book-front {
+  transform: translateZ(15px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 27px 20px 24px;
+  box-shadow:
+    inset 5px 0 8px #0005,
+    0 20px 45px #0008;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, #00000009 3px);
+}
+.book-front::after {
+  content: '';
+  position: absolute;
+  inset: 11px;
+  border: 1px solid #c2a15b55;
+  pointer-events: none;
+}
+.book-back {
+  transform: translateZ(-15px) rotateY(180deg);
+}
+.book-pages {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  right: 0;
+  width: 30px;
+  transform: rotateY(90deg);
+  transform-origin: right;
+  background: repeating-linear-gradient(90deg, #bda97d 0, #e3d5b0 1px, #e3d5b0 3px);
+}
+.book-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  background: var(--book-color, #33463c);
+  border: 1px solid #c3a15e;
+  transform: translateX(-15px) rotateY(-90deg);
+  writing-mode: vertical-rl;
+  text-align: center;
+  padding: 20px 3px;
+  font-family: 'SimSun', serif;
+  letter-spacing: 4px;
+}
+.cover-border {
+  position: absolute;
+  inset: 17px;
+  border: 1px solid #bda366;
+  pointer-events: none;
+}
+.cover-author {
+  font-family: Georgia, serif;
+  font-size: 8px;
+  letter-spacing: 1px;
+  margin: 2px 0 22px;
+  opacity: 0.75;
+}
+.cover-title {
+  font-family: 'SimSun', serif;
+  font-size: 1.65rem;
+  letter-spacing: 6px;
+  margin-left: 6px;
+}
+.cover-motif {
+  width: 155px;
+  height: 122px;
+  margin: 12px 0;
+}
+.cover-english {
+  font-family: Georgia, serif;
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  text-align: center;
+  line-height: 1.8;
+}
+.cover-foot {
+  margin-top: auto;
+  font-family: 'SimSun', serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+.book-open-link {
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+  padding: 8px 0;
+  border-bottom: 1px solid #ad925c;
+  color: #e2cb94;
+  font-size: 1rem;
+  letter-spacing: 3px;
+}
+@media (min-width: 1700px) {
+  .study-intro {
+    max-width: 360px;
+  }
+}
+@media (max-width: 1000px) and (min-width: 701px) {
+  .study-intro {
+    left: 5%;
+    max-width: 230px;
+  }
+  .study-intro h1 {
+    font-size: 2rem;
+  }
+  .study-intro .room-eyebrow {
+    max-width: 160px;
+  }
+}
+@media (max-width: 700px) {
+  .study-room {
+    height: 920px;
+    min-height: 100svh;
+  }
+  .study-interior {
+    inset: auto;
+    top: 0;
+    left: 50%;
+    width: 1040px;
+    height: 900px;
+    transform: translateX(-50%);
+  }
+  .study-intro {
+    top: 116px;
+    left: 24px;
+    max-width: 300px;
+  }
+  .study-intro::before {
+    background: radial-gradient(ellipse, #172014dd, transparent 75%);
+  }
+  .study-intro .room-eyebrow {
+    font-size: 0.65rem;
+    margin-bottom: 12px;
+  }
+  .study-intro h1 {
+    font-size: 1.9rem;
+    line-height: 1.55;
+  }
+  .study-intro > p:last-child {
+    display: none;
+  }
+  .books-on-shelf {
+    top: 42.2%;
+  }
+  .shelf-book span {
+    font-size: 1.1rem;
+  }
+  .shelf-invitation {
+    top: 535px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+  }
+  .study-caption {
+    bottom: 30px;
+    left: 22px;
+    max-width: 180px;
+    font-size: 0.75rem;
+    gap: 9px;
+  }
+  .caption-line {
+    width: 20px;
+  }
+  .record-corner {
+    right: 12px;
+    bottom: 22px;
+  }
+  .gramophone-button {
+    width: 122px;
+  }
+  .record-label {
+    font-size: 0.875rem;
+  }
+  .record-label > span {
+    font-size: 0.65rem;
+  }
+  .book-dialog {
+    padding: 40px 16px 24px;
+  }
+  .book-preview-heading h2 {
+    font-size: 1.5rem;
+  }
+  .book-perspective {
+    height: 330px;
+    width: 270px;
+    margin: 14px auto;
+  }
+  .enlarged-book {
+    width: 218px;
+    height: 306px;
+  }
+  .book-front {
+    padding: 25px 17px 23px;
+  }
+  .cover-title {
+    font-size: 1.5rem;
+  }
+  .cover-motif {
+    width: 139px;
+    height: 108px;
+  }
+}
+
+/* 桌体独立成一层，手机也能看全两侧抽屉与桌腿。 */
+.study-desk {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+@media (max-width: 700px) {
+  .study-desk {
+    inset: auto;
+    top: 460px;
+    left: calc(50% - 50vw);
+    width: 100vw;
+    height: calc(100vw * 1000 / 1440);
+  }
+}

@@ -10,6 +10,7 @@ export const ROOM_DEFINITIONS = [
     color: '#896347',
     description: '木头、书页和暖光。留一把椅子，给那些想慢慢说的话。',
     theme: 'study',
+    page: './study.html',
   },
   {
     name: '留光展厅',
@@ -18,6 +19,7 @@ export const ROOM_DEFINITIONS = [
     color: '#d2c5a6',
     description: '把走过的地方，和偶然遇见的光，安静地挂在墙上。',
     theme: 'gallery',
+    page: './gallery.html',
   },
   {
     name: '深夜实验室',

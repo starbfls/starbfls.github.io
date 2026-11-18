@@ -604,3 +604,69 @@ dialog > p:last-child {
     transition: none !important;
   }
 }
+
+/* 门前保持画面安静，按钮与房门都可以触发开门。 */
+.at-door .intro {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(-12px);
+}
+.at-door .floor-nav,
+.at-door .movement-hint,
+.at-door .door-pin {
+  display: none;
+}
+.open-door-button {
+  padding: 17px 28px;
+  border-radius: 7px;
+  background: #34463a;
+  color: #f5f0e4;
+  box-shadow: 0 8px 30px #1c2c3226;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.open-door-button:hover:not(:disabled) {
+  background: #425a49;
+}
+.at-door footer {
+  justify-content: center;
+}
+.at-door .back-button {
+  position: absolute;
+  left: 44px;
+}
+.at-door .status {
+  position: absolute;
+  right: 44px;
+}
+@media (max-width: 650px) {
+  .at-door footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding-bottom: max(18px, env(safe-area-inset-bottom));
+  }
+  .at-door .back-button,
+  .at-door .status {
+    position: static;
+  }
+  .at-door .back-button {
+    margin: 0;
+    padding: 16px 12px;
+    font-size: 11px;
+  }
+  .at-door .back-button span {
+    display: none;
+  }
+  .open-door-button {
+    padding: 16px 12px;
+    font-size: 11px;
+  }
+  .at-door .status {
+    grid-column: 1 / -1;
+  }
+}
+
+.at-door #world {
+  cursor: default;
+}

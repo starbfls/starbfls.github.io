@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#1d251c" />
+    <meta name="description" content="栖木书房。选一本日记，把日子慢慢翻开。" />
+    <title>栖木书房 · starbfls</title>
+    <style>
+      html {
+        background: #1d251c;
+      }
+      body {
+        margin: 0;
+      }
+    </style>
+    <link rel="stylesheet" href="./styles/rooms.css" />
+    <link rel="stylesheet" href="./styles/study.css" />
+  </head>
+  <body class="study-page">
+    <header class="room-header">
+      <a class="room-brand" href="./"
+        ><span class="room-brand-mark">s.</span><span>starbfls<small>栖木书房</small></span></a
+      >
+      <nav aria-label="房间导航">
+        <a href="./gallery.html">留光展厅</a
+        ><a class="corridor-link" href="./?door=study">返回回廊</a>
+      </nav>
+    </header>
+    <main class="study-room" aria-labelledby="study-title">
+      <div class="study-interior">
+        <img
+          class="study-illustration"
+          src="./assets/study-room.svg"
+          alt="古典木质书房的拱窗、书架和画作。"
+        />
+        <img
+          class="study-desk"
+          src="./assets/writing-desk.svg"
+          alt="完整的古典书桌：木质桌面、左右抽屉柜、雕饰桌裙和弯曲桌腿，桌上放着书、羽毛笔与台灯。"
+        />
+        <div class="books-on-shelf" id="bookshelf" aria-label="可翻阅的日记"></div>
+      </div>
+      <section class="study-intro">
+        <p class="room-eyebrow">A QUIET ROOM FOR STORIES</p>
+        <h1 id="study-title">把日子，<br />慢慢写成书。</h1>
+        <p>书页有时很轻，<br />有时，装得下一个世界。</p>
+      </section>
+      <p class="shelf-invitation">选一本金边日记，翻开看看。</p>
+      <div class="study-caption"><span class="caption-line"></span>此间，有书，有光。</div>
+      <aside class="record-corner" aria-label="书房留声机">
+        <button
+          id="gramophone"
+          class="gramophone-button"
+          aria-expanded="false"
+          aria-controls="record-note"
+          aria-label="留声机，尚未放入唱片"
+        >
+          <img src="./assets/gramophone.svg" alt="黄铜喇叭与木质底座的古典留声机" /><span
+            class="record-label"
+            >留声机<span id="record-state">等待一张唱片</span></span
+          >
+        </button>
+        <div class="record-note" id="record-note" hidden>
+          <p id="record-title">唱片架还空着</p>
+          <p id="record-description">音乐会从这里响起。</p>
+          <button id="close-record-note">收起</button>
+        </div>
+        <audio id="study-audio" preload="none"></audio>
+        <p class="visually-hidden" id="music-status" role="status" aria-live="polite"></p>
+      </aside>
+    </main>
+    <dialog class="book-dialog" id="book-preview" aria-labelledby="book-preview-title">
+      <button class="dialog-dismiss" id="close-book" aria-label="把书放回书架">×</button>
+      <div class="book-preview-heading">
+        <p class="room-eyebrow">FROM THE BOOKSHELF</p>
+        <h2 id="book-preview-title"></h2>
+        <p>点击封面，翻开这本日记。</p>
+      </div>
+      <div class="book-perspective">
+        <div class="enlarged-book" id="enlarged-book">
+          <div class="book-back"></div>
+          <div class="book-pages"></div>
+          <div class="book-spine" id="preview-spine"></div>
+          <a class="book-front" id="preview-cover" href="./photos.html"
+            ><span class="cover-border"></span
+            ><span class="cover-author">STARB FLS / PERSONAL COLLECTION</span
+            ><span class="cover-title" id="cover-title"></span
+            ><svg class="cover-motif" viewBox="0 0 180 140" aria-hidden="true">
+              <use id="cover-motif" href="./assets/book-motifs.svg#travel"></use></svg
+            ><span class="cover-english" id="cover-english"></span
+            ><span class="cover-foot">藏于书页，留给日后</span></a
+          >
+        </div>
+      </div>
+      <a class="book-open-link" id="open-album" href="./photos.html">翻开相册</a>
+    </dialog>
+    <script type="module" src="./js/pages/study.js"></script>
+  </body>
+</html>

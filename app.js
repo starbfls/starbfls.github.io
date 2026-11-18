@@ -21,6 +21,15 @@ const navigation = createNavigation({ rooms, ui });
 ui.bindActions(navigation);
 bindControls({ canvas, engine, navigation, ui });
 
+const returnRoom = new URLSearchParams(location.search).get('door');
+const returnIndex = rooms.findIndex((room) => room.theme === returnRoom);
+if (returnIndex !== -1) navigation.resumeAtDoor(returnIndex);
+
+window.addEventListener('pageshow', (event) => {
+  const index = navigation.state.room;
+  if (event.persisted && rooms[index]?.page) navigation.resumeAtDoor(index);
+});
+
 let previousFrame = 0;
 let lastPinUpdate = 0;
 function tick(now) {
@@ -42,7 +51,8 @@ window.__house = {
   rooms,
   camera: navigation.camera,
   engine,
-  enter: navigation.enter,
+  enter: navigation.approachRoom,
+  openDoor: navigation.openDoor,
   leave: navigation.leave,
   projectDoor: (index) => engine.project(local(rooms[index], 0, 1.4, -0.15)),
 };

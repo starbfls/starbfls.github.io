@@ -1,0 +1,133 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1440 1000"
+  preserveAspectRatio="none"
+  fill="none"
+>
+  <defs>
+    <linearGradient id="wall" x2="0" y2="1">
+      <stop stop-color="#303a2b" />
+      <stop offset="1" stop-color="#182319" />
+    </linearGradient>
+    <linearGradient id="wood" x2="1" y2="0">
+      <stop stop-color="#21150e" />
+      <stop offset=".25" stop-color="#563723" />
+      <stop offset=".55" stop-color="#382218" />
+      <stop offset=".8" stop-color="#69442a" />
+      <stop offset="1" stop-color="#27180f" />
+    </linearGradient>
+    <linearGradient id="desktop" x1=".1" y1="0" x2=".8" y2="1">
+      <stop stop-color="#a27643" />
+      <stop offset=".3" stop-color="#70482c" />
+      <stop offset=".7" stop-color="#513420" />
+      <stop offset="1" stop-color="#8b6038" />
+    </linearGradient>
+    <linearGradient id="glass" x2="0" y2="1">
+      <stop stop-color="#c7c5a4" />
+      <stop offset=".6" stop-color="#8d9d82" />
+      <stop offset="1" stop-color="#4d6350" />
+    </linearGradient>
+    <linearGradient id="floor" x2="0" y2="1">
+      <stop stop-color="#303022" />
+      <stop offset="1" stop-color="#171c15" />
+    </linearGradient>
+    <linearGradient id="gold" x2="1" y2="1">
+      <stop stop-color="#f0dc9f" />
+      <stop offset=".4" stop-color="#ab8249" />
+      <stop offset=".7" stop-color="#d1b172" />
+      <stop offset="1" stop-color="#765127" />
+    </linearGradient>
+    <linearGradient id="paper" x2="0" y2="1">
+      <stop stop-color="#e0cba0" />
+      <stop offset="1" stop-color="#a99269" />
+    </linearGradient>
+    <radialGradient id="light">
+      <stop stop-color="#e4be78" stop-opacity=".26" />
+      <stop offset="1" stop-color="#d6a458" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="vignette">
+      <stop offset=".3" stop-color="#080b08" stop-opacity="0" />
+      <stop offset="1" stop-color="#080b08" stop-opacity=".55" />
+    </radialGradient>
+    <pattern id="grain" width="210" height="18" patternUnits="userSpaceOnUse">
+      <path
+        d="M0 3C50 1 80 9 135 3s60 0 75 1M0 12c65-7 100 7 170 1s26 0 40 1"
+        stroke="#d5ad69"
+        stroke-opacity=".09"
+      />
+    </pattern>
+    <pattern id="wallpaper" width="72" height="88" patternUnits="userSpaceOnUse">
+      <path
+        d="M36 8c-17 17-18 31 0 44C54 39 53 25 36 8ZM36 24v45m-12-3c-15-13-14-24 0-27m24 27c15-13 14-24 0-27"
+        stroke="#b9a26a"
+        stroke-opacity=".085"
+      />
+    </pattern>
+    <pattern id="frieze" width="50" height="22" patternUnits="userSpaceOnUse">
+      <path d="M0 4h40v14H10V9h20" stroke="#9a7c48" stroke-width="2" opacity=".5" />
+    </pattern>
+  </defs>
+  <g id="desk-shadow"><ellipse cx="710" cy="948" rx="610" ry="38" fill="#080b08" opacity=".5" /></g>
+  <g id="complete-writing-desk">
+    <g id="rear-legs" fill="#251a12" stroke="#6e512d" stroke-width="2">
+      <path d="M278 676h28l-8 228h-27ZM1141 676h28l12 228h-27Z" />
+    </g>
+    <g id="drawer-pedestals" fill="url(#wood)" stroke="#9c7946" stroke-width="1.5">
+      <path d="M236 697h209v211H236ZM1000 697h210v211h-210Z" />
+      <path
+        d="M248 710h185v46H248Zm0 58h185v47H248Zm0 59h185v65H248ZM1012 710h185v46h-185Zm0 58h185v47h-185Zm0 59h185v65h-185Z"
+      />
+      <path d="M228 903h225v17H228Zm765 0h224v17H993Z" />
+    </g>
+    <g fill="url(#gold)">
+      <ellipse cx="341" cy="733" rx="13" ry="4" />
+      <ellipse cx="341" cy="790" rx="13" ry="4" />
+      <ellipse cx="341" cy="853" rx="13" ry="4" />
+      <ellipse cx="1105" cy="733" rx="13" ry="4" />
+      <ellipse cx="1105" cy="790" rx="13" ry="4" />
+      <ellipse cx="1105" cy="853" rx="13" ry="4" />
+    </g>
+    <path d="M173 676h1100v55H173Z" fill="url(#wood)" stroke="#ab854b" stroke-width="2" />
+    <path d="M461 708h523v38c-131-25-392-25-523 0Z" fill="#3d291b" stroke="#94703e" />
+    <path
+      d="M655 720c28 16 92 16 124 0m-93 1 33 18 32-18m-19 5v18m-43-22-22 10m77-10 22 10"
+      stroke="#b39656"
+      stroke-width="2"
+    />
+    <path
+      d="M177 698h37c-10 60 28 128 7 196l-9 38h-32l10-42c9-68-28-135-13-192ZM1228 698h37c15 57-22 124-13 192l10 42h-32l-9-38c-21-68 17-136 7-196Z"
+      fill="url(#wood)"
+      stroke="#a07e49"
+      stroke-width="2"
+    />
+    <path d="m181 931-13 14h54l-10-14m1018 0-10 14h54l-12-14" fill="#61452a" stroke="#a07e49" />
+    <path d="M222 610h1000l104 81H116Z" fill="url(#desktop)" stroke="#c0995c" stroke-width="2" />
+    <path d="M222 610h1000l104 81H116Z" fill="url(#grain)" />
+    <path d="M116 691h1210v15H116Z" fill="#3a2718" stroke="#a67e46" />
+    <path d="M240 626h955l61 48H176Z" stroke="#d1b47a" stroke-opacity=".3" />
+  </g>
+  <g id="desk-objects">
+    <path d="m604 631 104-14 122 11 30 49-143-13-135 14Z" fill="url(#paper)" stroke="#896a3f" />
+    <path
+      d="m708 617 9 47m-9-47-98 16m102-10 109 9m-106-3 111 8m-112-3 116 10m-115-3 121 11m-124-13-111 15m109-8-116 15"
+      stroke="#7a6e50"
+      stroke-opacity=".5"
+    />
+    <path d="M451 636h28v20h-28Z" fill="#16221c" stroke="#b4995e" />
+    <ellipse cx="465" cy="636" rx="14" ry="5" fill="#0d1713" stroke="#b4995e" />
+    <path
+      d="m466 637 45-89c-28 4-54 36-45 67m8-22 23-28m-17 41 14-18"
+      stroke="#cfc29a"
+      stroke-width="2"
+      fill="#c1b489"
+    />
+    <path
+      d="M1059 629h72m-36-5V497m-53 10h105l-20-74h-66Z"
+      stroke="url(#gold)"
+      stroke-width="5"
+      fill="#314d35"
+    />
+    <path d="M1036 509h118" stroke="#a18a52" stroke-width="3" />
+    <ellipse cx="1095" cy="629" rx="40" ry="9" fill="url(#gold)" />
+  </g>
+</svg>

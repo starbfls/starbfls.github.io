@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="travel" viewBox="0 0 180 140">
+    <g fill="none" stroke="currentColor" stroke-width="1.3">
+      <circle cx="129" cy="36" r="17" />
+      <path
+        d="m15 105 43-66 31 48 22-30 55 49M45 59l13-20 13 22m-24-2 11 6 13-4M14 112h152M28 123h123m-94-18 15-23 17 23"
+      />
+    </g>
+  </symbol>
+  <symbol id="days" viewBox="0 0 180 140">
+    <g fill="none" stroke="currentColor" stroke-width="1.3">
+      <path
+        d="M88 121V30m0 49c-43-2-51-26-47-42 33 1 47 18 47 42Zm0 20c41-1 54-23 51-43-35 0-51 17-51 43Zm0-40c29-1 39-19 34-36-25 1-35 17-34 36Z"
+      />
+      <ellipse cx="90" cy="124" rx="31" ry="4" />
+      <path d="m38 16 4 7m105 91 6 4M33 98l8-3" />
+    </g>
+  </symbol>
+  <symbol id="light" viewBox="0 0 180 140">
+    <g fill="none" stroke="currentColor" stroke-width="1.3">
+      <path d="M25 34h130v84H25Zm-8-9h146v100H17ZM25 98l38-36 37 30 22-19 33 29" />
+      <circle cx="117" cy="54" r="10" />
+      <path d="M40 17v-7m22 7V9m57 8V9m22 8V9M40 133v-6m22 6v-6m57 6v-6m22 6v-6" />
+    </g>
+  </symbol>
+</svg>

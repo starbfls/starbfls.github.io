@@ -1,0 +1,55 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1600 1000"
+  preserveAspectRatio="none"
+  fill="none"
+>
+  <defs>
+    <linearGradient id="back" x2="0" y2="1">
+      <stop stop-color="#f8f8f5" />
+      <stop offset="1" stop-color="#e4e5df" />
+    </linearGradient>
+    <linearGradient id="floor" x2="0" y2="1">
+      <stop stop-color="#d7d9d2" />
+      <stop offset="1" stop-color="#b8bdb5" />
+    </linearGradient>
+    <linearGradient id="side">
+      <stop stop-color="#d6d9d2" />
+      <stop offset="1" stop-color="#e8e9e3" />
+    </linearGradient>
+    <radialGradient id="pool">
+      <stop stop-color="#fff" stop-opacity=".6" />
+      <stop offset="1" stop-color="#fff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="#eef0e9" />
+  <path d="M140 126h1320v562H140Z" fill="url(#back)" />
+  <path d="M0 0h1600l-140 126H140Z" fill="#eeefe9" />
+  <path d="m0 0 140 126v562L0 1000Z" fill="url(#side)" />
+  <path d="m1600 0-140 126v562l140 312Z" fill="#d5d9d1" />
+  <path d="M140 688h1320l140 312H0Z" fill="url(#floor)" />
+  <path
+    d="M140 688h1320M0 998h1600m-1372-2 403-308m740 308-403-308M0 867h1600M801 688v312"
+    stroke="#9da699"
+    stroke-opacity=".2"
+  />
+  <path d="M348 80h895m-895 6h895" stroke="#a9aea2" stroke-width="2" />
+  <g fill="#626b60">
+    <path d="M405 78v19h20V78Zm245 0v19h20V78Zm280 0v19h20V78Zm255 0v19h20V78Z" />
+  </g>
+  <g fill="#fafbf5">
+    <path
+      d="m401 97 10 10h17l-3-10Zm245 0 4 10h17l2-10Zm281 0 4 10h17l-1-10Zm254 0-3 10h17l10-10Z"
+    />
+  </g>
+  <ellipse cx="454" cy="430" rx="210" ry="280" fill="url(#pool)" />
+  <ellipse cx="1110" cy="430" rx="230" ry="280" fill="url(#pool)" />
+  <g id="museum-bench">
+    <ellipse cx="802" cy="885" rx="268" ry="26" fill="#687461" opacity=".15" />
+    <path d="M574 824h454l57 24H527Z" fill="#787e6c" />
+    <path d="M527 848h558v15H527Z" fill="#464e41" />
+    <path d="M559 862h22v38h-22Zm474 0h22v38h-22Z" fill="#30382d" />
+    <path d="M585 828h432m-449 7h466" stroke="#a2a58f" stroke-opacity=".6" />
+  </g>
+  <path d="M140 130v556m1320-556v556" stroke="#b7bfb1" stroke-opacity=".4" />
+</svg>
